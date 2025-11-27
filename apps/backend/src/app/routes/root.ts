@@ -1,10 +1,12 @@
 import { FastifyInstance } from 'fastify';
+import { healthRoutes } from './health';
+import { authRoutes } from './auth';
+import { profileRoutes } from './profile';
 import { tasksRoutes } from './tasks';
 
 export default async function(fastify: FastifyInstance) {
-  fastify.get('/', async function() {
-    return { message: 'Hello API' };
-  });
-
-  fastify.register(tasksRoutes, { prefix: '/tasks' });
+  fastify.register(healthRoutes, { prefix: '/health' })
+  fastify.register(authRoutes, { prefix: '/auth' })
+  fastify.register(profileRoutes, { prefix: '/profile' })
+  fastify.register(tasksRoutes, { prefix: '/tasks' })
 }

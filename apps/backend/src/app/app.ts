@@ -6,7 +6,7 @@ import fastifySwagger from '@fastify/swagger'
 import scalarApiReference from '@scalar/fastify-api-reference'
 import AutoLoad from '@fastify/autoload';
 import { serializerCompiler, validatorCompiler, jsonSchemaTransform, type ZodTypeProvider } from 'fastify-type-provider-zod';
-import envVariables from '../env';
+import envVariables from './env';
 
 /* eslint-disable-next-line */
 export interface AppOptions { }

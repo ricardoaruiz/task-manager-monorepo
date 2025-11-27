@@ -1,6 +1,6 @@
 import Fastify from 'fastify';
 import { app } from './app/app';
-import env from './env'
+import env from './app/env'
 
 // Instantiate Fastify with some config
 const server = Fastify({
