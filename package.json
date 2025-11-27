@@ -2,9 +2,23 @@
   "name": "@task-manager/source",
   "version": "0.0.0",
   "license": "MIT",
-  "scripts": {},
+  "scripts": {
+    "prepare": "husky install"
+  },
+  "lint-staged": {
+    "src/**/*.+(js|jsx|ts|tsx|md|mdx|yml|yaml)": [
+      "nx run-many -t=test --parallel --verbose"
+    ]
+  },
+  "config": {
+    "commitizen": {
+      "path": "git-cz"
+    }
+  },
   "private": true,
   "devDependencies": {
+    "@commitlint/cli": "^20.1.0",
+    "@commitlint/config-conventional": "^20.0.0",
     "@nx/esbuild": "22.1.2",
     "@nx/js": "^22.1.2",
     "@nx/node": "^22.1.2",
@@ -15,8 +29,12 @@
     "@types/node": "20.19.9",
     "@vitest/coverage-v8": "^4.0.0",
     "@vitest/ui": "^4.0.14",
+    "commitizen": "^4.3.1",
     "esbuild": "^0.19.2",
+    "git-cz": "^4.9.0",
+    "husky": "^8.0.0",
     "jsdom": "~22.1.0",
+    "lint-staged": "^16.2.7",
     "nx": "22.1.2",
     "tslib": "^2.3.0",
     "typescript": "~5.9.2",
