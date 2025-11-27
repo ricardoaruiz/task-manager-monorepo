@@ -5,6 +5,7 @@ dist
 tmp
 out-tsc
 data
+test-output
 
 # dependencies
 node_modules

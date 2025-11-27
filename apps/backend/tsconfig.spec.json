@@ -1,17 +1,16 @@
 {
   "extends": "../../tsconfig.base.json",
   "compilerOptions": {
-    "outDir": "dist",
+    "outDir": "./out-tsc/vitest",
     "types": [
-      "node"
-    ],
-    "rootDir": "src",
-    "tsBuildInfoFile": "dist/tsconfig.app.tsbuildinfo"
+      "vitest/globals",
+      "vitest/importMeta",
+      "vite/client",
+      "node",
+      "vitest"
+    ]
   },
   "include": [
-    "src/**/*.ts"
-  ],
-  "exclude": [
     "vite.config.ts",
     "vite.config.mts",
     "vitest.config.ts",
@@ -23,11 +22,8 @@
     "src/**/*.test.js",
     "src/**/*.spec.js",
     "src/**/*.test.jsx",
-    "src/**/*.spec.jsx"
-  ],
-  "references": [
-    {
-      "path": "../../packages/contracts/tsconfig.lib.json"
-    }
+    "src/**/*.spec.jsx",
+    "src/**/*.d.ts",
+    "src/**/*.ts"
   ]
 }
