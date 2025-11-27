@@ -1,0 +1,111 @@
+{
+  "name": "@task-manager/backend",
+  "version": "0.0.1",
+  "private": true,
+  "nx": {
+    "targets": {
+      "build": {
+        "executor": "@nx/esbuild:esbuild",
+        "outputs": [
+          "{options.outputPath}"
+        ],
+        "defaultConfiguration": "production",
+        "options": {
+          "platform": "node",
+          "outputPath": "apps/backend/dist",
+          "format": [
+            "cjs"
+          ],
+          "bundle": false,
+          "main": "apps/backend/src/main.ts",
+          "tsConfig": "apps/backend/tsconfig.app.json",
+          "assets": [
+            "apps/backend/src/assets"
+          ],
+          "esbuildOptions": {
+            "sourcemap": true,
+            "outExtension": {
+              ".js": ".js"
+            }
+          }
+        },
+        "configurations": {
+          "development": {},
+          "production": {
+            "esbuildOptions": {
+              "sourcemap": false,
+              "outExtension": {
+                ".js": ".js"
+              }
+            }
+          }
+        }
+      },
+      "prune-lockfile": {
+        "dependsOn": [
+          "build"
+        ],
+        "cache": true,
+        "executor": "@nx/js:prune-lockfile",
+        "outputs": [
+          "{workspaceRoot}/apps/backend/dist/package.json",
+          "{workspaceRoot}/apps/backend/dist/package-lock.json"
+        ],
+        "options": {
+          "buildTarget": "build"
+        }
+      },
+      "copy-workspace-modules": {
+        "dependsOn": [
+          "build"
+        ],
+        "cache": true,
+        "outputs": [
+          "{workspaceRoot}/apps/backend/dist/workspace_modules"
+        ],
+        "executor": "@nx/js:copy-workspace-modules",
+        "options": {
+          "buildTarget": "build"
+        }
+      },
+      "prune": {
+        "dependsOn": [
+          "prune-lockfile",
+          "copy-workspace-modules"
+        ],
+        "executor": "nx:noop"
+      },
+      "serve": {
+        "continuous": true,
+        "executor": "@nx/js:node",
+        "defaultConfiguration": "development",
+        "dependsOn": [
+          "build"
+        ],
+        "options": {
+          "buildTarget": "@task-manager/backend:build",
+          "runBuildTargetDependencies": false
+        },
+        "configurations": {
+          "development": {
+            "buildTarget": "@task-manager/backend:build:development"
+          },
+          "production": {
+            "buildTarget": "@task-manager/backend:build:production"
+          }
+        }
+      }
+    }
+  },
+  "dependencies": {
+    "@fastify/autoload": "~6.3.1",
+    "@fastify/cookie": "^11.0.2",
+    "@fastify/cors": "^11.1.0",
+    "@fastify/sensible": "~6.0.3",
+    "@fastify/swagger": "^9.6.1",
+    "@scalar/fastify-api-reference": "^1.40.0",
+    "fastify": "~5.6.2",
+    "fastify-plugin": "~5.1.0",
+    "fastify-type-provider-zod": "^6.1.0"
+  }
+}
