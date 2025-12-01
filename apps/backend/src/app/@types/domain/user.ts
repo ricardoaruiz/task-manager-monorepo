@@ -1,9 +1,4 @@
-export type User = {
-  id: string
-  name: string
-  email: string
-  password: string
-}
+import { User } from '@task-manager/domain'
 
 export type CreateUserInput = Omit<User, 'id'>
 export type MeInput = {

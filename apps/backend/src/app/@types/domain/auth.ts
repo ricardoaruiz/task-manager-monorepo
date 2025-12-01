@@ -1,4 +1,4 @@
-import type { User } from './user'
+import type { User } from '@task-manager/domain'
 
 export type LoginInput = {
   email: string

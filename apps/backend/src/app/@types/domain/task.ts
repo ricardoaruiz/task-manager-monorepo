@@ -1,11 +1,4 @@
-export type Task = {
-  id: string
-  title: string
-  description: string
-  completed_at: Date | null
-  archived_at: Date | null
-  user_id: string
-}
+import { Task } from '@task-manager/domain'
 
 type Filter = Partial<Omit<Task, 'id' | 'completed_at' | 'user_id'>> & {
   status?: 'completed' | 'pending'
