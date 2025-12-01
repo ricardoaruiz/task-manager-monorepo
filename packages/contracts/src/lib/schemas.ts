@@ -1,5 +1,9 @@
 import z4 from "zod/v4"
 
+// Commons
+export const CommonVoidResponseSchema = z4.void()
+export const CommonUnauthorizedResponseSchema = z4.void()
+
 // Health Check
 export const HealtCheckResponseSuccess = z4.object({
   status: z4.string(),

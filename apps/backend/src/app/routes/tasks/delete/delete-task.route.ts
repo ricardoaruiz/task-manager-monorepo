@@ -1,7 +1,7 @@
 import type { FastifyPluginAsyncZod } from 'fastify-type-provider-zod'
 import { StatusCodes } from 'http-status-codes'
 import { checkAuthMiddleware } from '../../../middlewares/check-auth.middleware'
-import { CommonUnauthorizedResponseSchema } from '../../../routes/routes.schame'
+import { CommonUnauthorizedResponseSchema } from '@task-manager/contracts'
 import {
   DeleteTaskParamsSchema,
   DeleteTaskRsponseSuccessSchema,

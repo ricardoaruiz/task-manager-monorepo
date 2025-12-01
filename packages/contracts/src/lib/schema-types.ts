@@ -1,5 +1,9 @@
 import z4 from "zod/v4";
-import { LoginRouteBodySchema, MeResponseSuccessSchema, SignupBodySchema, SignupResponseSuccessSchema } from "./schemas.js";
+import { CommonUnauthorizedResponseSchema, CommonVoidResponseSchema, LoginRouteBodySchema, MeResponseSuccessSchema, SignupBodySchema, SignupResponseSuccessSchema } from "./schemas.js";
+
+// Commons
+export type CommonVoidResponseType = z4.infer<typeof CommonVoidResponseSchema>;
+export type CommonUnauthorizedResponseType = z4.infer<typeof CommonUnauthorizedResponseSchema>;
 
 // Signin
 export type LoginRouteBodyType = z4.infer<typeof LoginRouteBodySchema>;

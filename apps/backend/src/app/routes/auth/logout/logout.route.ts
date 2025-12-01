@@ -1,6 +1,6 @@
 import type { FastifyPluginAsyncZod } from 'fastify-type-provider-zod'
 import { StatusCodes } from 'http-status-codes'
-import { CommonVoidResponseSchema } from '../../../routes/routes.schame'
+import { CommonVoidResponseSchema } from '@task-manager/contracts'
 
 export const logoutRoute: FastifyPluginAsyncZod = async (app, _options) => {
   app.post(

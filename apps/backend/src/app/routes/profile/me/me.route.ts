@@ -1,14 +1,10 @@
 import type { FastifyPluginAsyncZod } from 'fastify-type-provider-zod'
 import { StatusCodes } from 'http-status-codes'
 import { checkAuthMiddleware } from '../../../middlewares/check-auth.middleware'
-import { CommonUnauthorizedResponseSchema } from '../../../routes/routes.schame'
-import { MeResponseSuccessSchema } from '@task-manager/contracts'
+import { MeResponseSuccessSchema, CommonUnauthorizedResponseSchema } from '@task-manager/contracts'
 import type { RouteOptions } from './me.types'
 
-export const meRoute: FastifyPluginAsyncZod<RouteOptions> = async (
-  app,
-  options,
-) => {
+export const meRoute: FastifyPluginAsyncZod<RouteOptions> = async (app, options) => {
   app.get(
     '/me',
     {
@@ -34,3 +30,5 @@ export const meRoute: FastifyPluginAsyncZod<RouteOptions> = async (
     },
   )
 }
+
+
