@@ -1,6 +1,6 @@
 import type { FastifyPluginAsyncZod } from 'fastify-type-provider-zod'
 import { StatusCodes } from 'http-status-codes'
-import { CHECK_ROUTE_SUCCESS_RESPONSE_SCHEMA } from './check.schemas'
+import { HealtCheckResponseSuccess } from '@task-manager/contracts'
 
 /**
  * Health check route
@@ -19,7 +19,7 @@ export const checkRoute: FastifyPluginAsyncZod = async (app, _options) => {
         description: 'Endpoint to check if the server is running',
         tags: ['Health'],
         response: {
-          [StatusCodes.OK]: CHECK_ROUTE_SUCCESS_RESPONSE_SCHEMA,
+          [StatusCodes.OK]: HealtCheckResponseSuccess,
         },
       },
     },
