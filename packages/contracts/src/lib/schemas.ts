@@ -60,3 +60,11 @@ export const MeResponseSuccessSchema = z4.object({
   name: z4.string().describe('User full name'),
   email: z4.email().describe('User email address'),
 })
+
+// Tasks
+// Archive Task
+export const ArchiveTaskParamsSchema = z4.object({
+  id: z4.uuidv7().describe('The unique identifier of the task to be archived'),
+})
+
+export const ArchiveTaskResponseSuccessSchema = z4.void()

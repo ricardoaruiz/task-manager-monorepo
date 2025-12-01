@@ -5,7 +5,7 @@ import { CommonUnauthorizedResponseSchema } from '@task-manager/contracts'
 import {
   ArchiveTaskParamsSchema,
   ArchiveTaskResponseSuccessSchema,
-} from './archive-task.schemas'
+} from '@task-manager/contracts'
 import type { ArchiveTaskOptions } from './archive-task.types'
 
 export const archiveTaskRoute: FastifyPluginAsyncZod<

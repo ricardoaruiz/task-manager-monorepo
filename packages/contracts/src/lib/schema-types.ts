@@ -1,5 +1,5 @@
 import z4 from "zod/v4";
-import { CommonUnauthorizedResponseSchema, CommonVoidResponseSchema, LoginRouteBodySchema, MeResponseSuccessSchema, SignupBodySchema, SignupResponseSuccessSchema } from "./schemas.js";
+import { ArchiveTaskParamsSchema, ArchiveTaskResponseSuccessSchema, CommonUnauthorizedResponseSchema, CommonVoidResponseSchema, LoginRouteBodySchema, MeResponseSuccessSchema, SignupBodySchema, SignupResponseSuccessSchema } from "./schemas.js";
 
 // Commons
 export type CommonVoidResponseType = z4.infer<typeof CommonVoidResponseSchema>;
@@ -14,3 +14,8 @@ export type SignupResponseSuccessType = z4.infer<typeof SignupResponseSuccessSch
 
 // Me
 export type MeResponseSuccessType = z4.infer<typeof MeResponseSuccessSchema>;
+
+// Tasks
+// Archive Task
+export type ArchiveTaskParamsType = z4.infer<typeof ArchiveTaskParamsSchema>;
+export type ArchiveTaskResponseSuccessType = z4.infer<typeof ArchiveTaskResponseSuccessSchema>;
