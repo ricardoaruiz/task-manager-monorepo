@@ -4,7 +4,7 @@ import { checkAuthMiddleware } from '../../../middlewares/check-auth.middleware'
 import {
   CreateTaskBodySchema,
   CreateTaskResponseSuccessSchema,
-} from './create-task.schemas'
+} from '@task-manager/contracts'
 import type { RouteOptions } from './create-task.types'
 
 export const createTaskRoute: FastifyPluginAsyncZod<RouteOptions> = async (
