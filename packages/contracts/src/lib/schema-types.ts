@@ -1,5 +1,5 @@
 import z4 from "zod/v4";
-import { ArchiveTaskParamsSchema, ArchiveTaskResponseSuccessSchema, CommonUnauthorizedResponseSchema, CommonVoidResponseSchema, CompleteTaskParamsSchema, CompleteTaskResponseSuccessSchema, CreateTaskBodySchema, CreateTaskResponseSuccessSchema, DeleteTaskParamsSchema, DeleteTaskRsponseSuccessSchema, LoginRouteBodySchema, MeResponseSuccessSchema, SignupBodySchema, SignupResponseSuccessSchema } from "./schemas.js";
+import { ArchiveTaskParamsSchema, ArchiveTaskResponseSuccessSchema, CommonUnauthorizedResponseSchema, CommonVoidResponseSchema, CompleteTaskParamsSchema, CompleteTaskResponseSuccessSchema, CreateTaskBodySchema, CreateTaskResponseSuccessSchema, DeleteTaskParamsSchema, DeleteTaskRsponseSuccessSchema, ListTaskQueryStringSchema, ListTaskRouteResponseSuccessSchema, LoginRouteBodySchema, MeResponseSuccessSchema, SignupBodySchema, SignupResponseSuccessSchema } from "./schemas.js";
 
 // Commons
 export type CommonVoidResponseType = z4.infer<typeof CommonVoidResponseSchema>;
@@ -31,3 +31,7 @@ export type CreateTaskResponseSuccessType = z4.infer<typeof CreateTaskResponseSu
 // Delete Task
 export type DeleteTaskParamsType = z4.infer<typeof DeleteTaskParamsSchema>;
 export type DeleteTaskRsponseSuccessType = z4.infer<typeof DeleteTaskRsponseSuccessSchema>;
+
+// List Tasks
+export type ListTaskQueryStringType = z4.infer<typeof ListTaskQueryStringSchema>;
+export type ListTaskRouteResponseSuccessType = z4.infer<typeof ListTaskRouteResponseSuccessSchema>;

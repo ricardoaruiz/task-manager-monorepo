@@ -5,7 +5,7 @@ import { CommonUnauthorizedResponseSchema } from '@task-manager/contracts'
 import {
   ListTaskQueryStringSchema,
   ListTaskRouteResponseSuccessSchema,
-} from './list-tasks.schemas'
+} from '@task-manager/contracts'
 import type { RouteOptions } from './list-tasks.types'
 
 export const listTasksRoute: FastifyPluginAsyncZod<RouteOptions> = async (
