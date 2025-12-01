@@ -1,4 +1,5 @@
-import type { ListTasksInput, Task } from '../../@types/domain'
+import type { ListTasksInput } from '../../@types/domain'
+import type { Task } from '@task-manager/domain'
 import type { TasksRepository } from '../../repositories/interfaces/task.repository'
 
 export class ListTasksUseCase {

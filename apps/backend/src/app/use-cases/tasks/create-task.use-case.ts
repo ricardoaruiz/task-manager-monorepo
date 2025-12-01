@@ -1,4 +1,5 @@
-import type { CreateTaskInput, Task } from '../../@types/domain'
+import type { CreateTaskInput } from '../../@types/domain'
+import type { Task } from '@task-manager/domain'
 import type { TasksRepository } from '../../repositories/interfaces/task.repository'
 import { TaskAlreadyExistsError } from '../errors/TaskAlreadyExistsError'
 

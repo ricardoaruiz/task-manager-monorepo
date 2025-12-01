@@ -1,5 +1,6 @@
 import { and, eq, ilike, isNotNull, isNull } from 'drizzle-orm'
-import type { CreateTaskInput, ListTasksInput, Task } from '../../@types/domain'
+import type { CreateTaskInput, ListTasksInput } from '../../@types/domain'
+import type { Task } from '@task-manager/domain'
 import { tasksTable } from '../../db/schema/tasks-table'
 import db from '../../lib/drizzle'
 import type { TasksRepository } from '../interfaces/task.repository'

@@ -1,4 +1,5 @@
-import type { CreateUserInput, User } from '../../@types/domain/user'
+import type { CreateUserInput } from '../../@types/domain/user'
+import type { User } from '@task-manager/domain'
 import type { UserRepository } from '../../repositories/interfaces/user.repository'
 import type { BcryptHashService } from '../../services'
 import { UserAlreadyExistsError } from '../errors/UserAlreadyExistsError'

@@ -1,4 +1,5 @@
-import type { CreateTaskInput, ListTasksInput, Task } from '../../@types/domain'
+import type { CreateTaskInput, ListTasksInput } from '../../@types/domain'
+import type { Task } from '@task-manager/domain'
 import type { TasksRepository } from '../interfaces/task.repository'
 
 export class InMemoryTasksRepository implements TasksRepository {

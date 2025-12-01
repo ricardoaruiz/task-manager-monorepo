@@ -1,8 +1,8 @@
 import type {
   CreateTaskInput,
   ListTasksInput,
-  Task,
 } from '../../@types/domain/task'
+import type { Task } from '@task-manager/domain'
 
 /**
  * Interface for the Tasks Repository.

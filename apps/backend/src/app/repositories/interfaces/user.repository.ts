@@ -1,4 +1,5 @@
-import type { CreateUserInput, User } from '../../@types/domain/user'
+import type { CreateUserInput } from '../../@types/domain/user'
+import type { User } from '@task-manager/domain'
 
 export interface UserRepository {
   /**

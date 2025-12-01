@@ -1,5 +1,6 @@
 import { eq } from 'drizzle-orm'
-import type { CreateUserInput, User } from '../../@types/domain/user'
+import type { CreateUserInput } from '../../@types/domain/user'
+import type { User } from '@task-manager/domain'
 import { userTable } from '../../db/schema/user-table'
 import db from '../../lib/drizzle'
 import type { UserRepository } from '../interfaces/user.repository'

@@ -1,4 +1,4 @@
-import type { Task } from '../../@types/domain'
+import type { Task } from '@task-manager/domain'
 import type { TasksRepository } from '../../repositories/interfaces/task.repository'
 import { TaskNotFoundError } from '../errors/TaskNotFoundError'
 
