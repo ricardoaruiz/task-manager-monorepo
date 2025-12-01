@@ -1,10 +1,8 @@
 import type { FastifyPluginAsyncZod } from 'fastify-type-provider-zod'
 import { StatusCodes } from 'http-status-codes'
-import {
-  LoginRouteBodySchema,
+import { LoginRouteBodySchema,
   LoginRouteResponseSuccessSchema,
-  LoginRouteResponseUnauthorizedSchema,
-} from './login.schemas'
+  LoginRouteResponseUnauthorizedSchema, } from '@task-manager/contracts'
 import type { RouteOptions } from './login.types'
 
 export const loginRoute: FastifyPluginAsyncZod<RouteOptions> = async (

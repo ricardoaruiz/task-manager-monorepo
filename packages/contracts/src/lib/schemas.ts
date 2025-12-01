@@ -1,12 +1,15 @@
 import z4 from "zod/v4"
 
-export const CreateTaskBodySchema = z4.object({
-  title: z4.string().min(1, 'Title is required').describe('Title of the task'),
-  description: z4.string().min(1, 'Description is required').describe('Description of the task'),
+export const LoginRouteBodySchema = z4.object({
+  email: z4
+    .email()
+    .min(1, 'Email is required')
+    .describe('The email of the user'),
+  password: z4
+    .string()
+    .min(6, 'Password must be at least 6 characters long')
+    .describe('The password of the user'),
 })
 
-export const CreateTaskResponseSuccessSchema = z4.object({
-  id: z4.uuid().describe('Unique identifier for the task'),
-})
-
-export const EmptyResponseSchema = z4.void()
+export const LoginRouteResponseSuccessSchema = z4.void()
+export const LoginRouteResponseUnauthorizedSchema = z4.void()
