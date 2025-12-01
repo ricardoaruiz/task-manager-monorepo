@@ -5,7 +5,7 @@ import { CommonUnauthorizedResponseSchema } from '@task-manager/contracts'
 import {
   UnCompleteTaskParamsSchema,
   UnCompleteTaskResponseSuccessSchema,
-} from './uncomplete-task.schemas'
+} from '@task-manager/contracts'
 import type { UnCompleteTaskOptions } from './uncomplete-task.types'
 
 export const uncompleteTaskRoute: FastifyPluginAsyncZod<

@@ -1,5 +1,26 @@
 import z4 from "zod/v4";
-import { ArchiveTaskParamsSchema, ArchiveTaskResponseSuccessSchema, CommonUnauthorizedResponseSchema, CommonVoidResponseSchema, CompleteTaskParamsSchema, CompleteTaskResponseSuccessSchema, CreateTaskBodySchema, CreateTaskResponseSuccessSchema, DeleteTaskParamsSchema, DeleteTaskRsponseSuccessSchema, ListTaskQueryStringSchema, ListTaskRouteResponseSuccessSchema, LoginRouteBodySchema, MeResponseSuccessSchema, SignupBodySchema, SignupResponseSuccessSchema } from "./schemas.js";
+import { 
+  ArchiveTaskParamsSchema,
+  ArchiveTaskResponseSuccessSchema,
+  CommonUnauthorizedResponseSchema,
+  CommonVoidResponseSchema,
+  CompleteTaskParamsSchema,
+  CompleteTaskResponseSuccessSchema,
+  CreateTaskBodySchema,
+  CreateTaskResponseSuccessSchema,
+  DeleteTaskParamsSchema,
+  DeleteTaskRsponseSuccessSchema,
+  ListTaskQueryStringSchema,
+  ListTaskRouteResponseSuccessSchema,
+  LoginRouteBodySchema,
+  MeResponseSuccessSchema,
+  SignupBodySchema,
+  SignupResponseSuccessSchema,
+  LoadTaskResponseNotFoundSchema,
+  LoadTaskRsponseSuccessSchema, 
+  LoadTaskParamsSchema,
+  UnCompleteTaskResponseSuccessSchema,
+  UnCompleteTaskParamsSchema} from "./schemas.js";
 
 // Commons
 export type CommonVoidResponseType = z4.infer<typeof CommonVoidResponseSchema>;
@@ -35,3 +56,12 @@ export type DeleteTaskRsponseSuccessType = z4.infer<typeof DeleteTaskRsponseSucc
 // List Tasks
 export type ListTaskQueryStringType = z4.infer<typeof ListTaskQueryStringSchema>;
 export type ListTaskRouteResponseSuccessType = z4.infer<typeof ListTaskRouteResponseSuccessSchema>;
+
+// Load Task
+export type LoadTaskParamsType = z4.infer<typeof LoadTaskParamsSchema>;
+export type LoadTaskRsponseSuccessType = z4.infer<typeof LoadTaskRsponseSuccessSchema>;
+export type LoadTaskResponseNotFoundType = z4.infer<typeof LoadTaskResponseNotFoundSchema>;
+
+// Uncomplete Task
+export type UnCompleteTaskParamsType = z4.infer<typeof UnCompleteTaskParamsSchema>;
+export type UnCompleteTaskResponseSuccessType = z4.infer<typeof UnCompleteTaskResponseSuccessSchema>;

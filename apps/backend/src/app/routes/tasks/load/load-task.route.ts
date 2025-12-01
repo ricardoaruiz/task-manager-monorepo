@@ -6,7 +6,7 @@ import {
   LoadTaskParamsSchema,
   LoadTaskResponseNotFoundSchema,
   LoadTaskRsponseSuccessSchema,
-} from './load-task.schemas'
+} from '@task-manager/contracts'
 import type { LoadTaskOptions } from './load-task.types'
 
 export const loadTaskRoute: FastifyPluginAsyncZod<LoadTaskOptions> = async (
