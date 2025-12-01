@@ -1,6 +1,6 @@
 import type { FastifyInstance } from 'fastify'
 import { getUseCaseFactory } from '../../use-cases/factory'
-import { archiveTaskRoute } from './archive/archive-task.route'
+import { archiveTaskRoute } from './archive'
 import { completeTaskRoute } from './complete'
 import { createTaskRoute } from './create'
 import { deleteTaskRoute } from './delete'

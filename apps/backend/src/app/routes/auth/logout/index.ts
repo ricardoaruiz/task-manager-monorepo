@@ -1,0 +1,1 @@
+export { logoutRoute } from './logout.route'

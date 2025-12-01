@@ -1,1 +1,1 @@
-export { archiveTaskRoute as completeTaskRoute } from './archive-task.route'
+export { archiveTaskRoute } from './archive-task.route'
