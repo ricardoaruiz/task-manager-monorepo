@@ -5,7 +5,7 @@ import { CommonUnauthorizedResponseSchema } from '@task-manager/contracts'
 import {
   DeleteTaskParamsSchema,
   DeleteTaskRsponseSuccessSchema,
-} from './delete-task.schemas'
+} from '@task-manager/contracts'
 import type { DeleteTaskOptions } from './delete-task.types'
 
 export const deleteTaskRoute: FastifyPluginAsyncZod<DeleteTaskOptions> = async (
