@@ -1,5 +1,10 @@
 import z4 from "zod/v4"
 
+// Health Check
+export const HealtCheckResponseSuccess = z4.object({
+  status: z4.string(),
+})
+
 // Signin
 export const LoginRouteBodySchema = z4.object({
   email: z4
@@ -43,4 +48,11 @@ export const SignupResponseSuccessSchema = z4.object({
   id: z4.string().describe('The unique identifier of the user'),
   name: z4.string().describe('The full name of the user'),
   email: z4.email().describe('The email address of the user'),
+})
+
+// Me
+export const MeResponseSuccessSchema = z4.object({
+  id: z4.string().describe('User unique identifier'),
+  name: z4.string().describe('User full name'),
+  email: z4.email().describe('User email address'),
 })
