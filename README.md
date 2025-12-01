@@ -1,109 +1,334 @@
-# TaskManager
+# 📋 Task Manager - Monorepo
 
-<a alt="Nx logo" href="https://nx.dev" target="_blank" rel="noreferrer"><img src="https://raw.githubusercontent.com/nrwl/nx/master/images/nx-logo.png" width="45"></a>
+Um sistema completo de gerenciamento de tarefas desenvolvido com arquitetura de monorepo, utilizando as melhores práticas de desenvolvimento moderno e tecnologias de ponta.
 
-✨ Your new, shiny [Nx workspace](https://nx.dev) is ready ✨.
+## 🚀 Visão Geral
 
-[Learn more about this workspace setup and its capabilities](https://nx.dev/nx-api/js?utm_source=nx_project&amp;utm_medium=readme&amp;utm_campaign=nx_projects) or run `npx nx graph` to visually explore what was created. Now, let's get you up to speed!
+O **Task Manager** é uma aplicação full-stack moderna que permite gerenciar tarefas de forma eficiente. O projeto foi estruturado como um monorepo utilizando **Nx**, proporcionando uma experiência de desenvolvimento otimizada com compartilhamento de código, testes unificados e build otimizado.
 
-## Generate a library
-
-```sh
-npx nx g @nx/js:lib packages/pkg1 --publishable --importPath=@my-org/pkg1
-```
-
-## Run tasks
-
-To build the library use:
-
-```sh
-npx nx build pkg1
-```
-
-To run any task with Nx use:
-
-```sh
-npx nx <target> <project-name>
-```
-
-These targets are either [inferred automatically](https://nx.dev/concepts/inferred-tasks?utm_source=nx_project&utm_medium=readme&utm_campaign=nx_projects) or defined in the `project.json` or `package.json` files.
-
-[More about running tasks in the docs &raquo;](https://nx.dev/features/run-tasks?utm_source=nx_project&utm_medium=readme&utm_campaign=nx_projects)
-
-## Versioning and releasing
-
-To version and release the library use
+### 🏗️ Arquitetura do Projeto
 
 ```
-npx nx release
+📦 task-manager-monorepo/
+├── 🖥️  apps/                    # Aplicações principais
+│   ├── 🔧 backend/              # API REST com Fastify
+│   └── 🎨 frontend/             # Interface React com TanStack
+├── 📚 packages/                 # Pacotes compartilhados
+│   ├── 📝 contracts/            # Schemas e validações (Zod)
+│   └── 🏢 domain/               # Entidades de domínio
+└── ⚙️  configurações globais    # Nx, TypeScript, etc.
 ```
 
-Pass `--dry-run` to see what would happen without actually releasing the library.
+## 🛠️ Tecnologias Utilizadas
 
-[Learn more about Nx release &raquo;](https://nx.dev/features/manage-releases?utm_source=nx_project&utm_medium=readme&utm_campaign=nx_projects)
+### Backend 🔧
+- **🚀 Fastify** - Framework web ultra-rápido para Node.js
+- **📊 PostgreSQL** - Banco de dados relacional robusto
+- **🛡️ Zod** - Validação de schemas com TypeScript
+- **📖 Swagger/Scalar** - Documentação automática da API
+- **🔐 JWT** - Autenticação e autorização
+- **🐳 Docker** - Containerização do banco de dados
 
-## Keep TypeScript project references up to date
+### Frontend 🎨
+- **⚛️ React 19** - Biblioteca para interfaces de usuário
+- **🗺️ TanStack Router** - Roteamento type-safe
+- **🔄 TanStack Query** - Gerenciamento de estado de servidor
+- **🎨 Tailwind CSS** - Framework CSS utilitário
+- **📋 React Hook Form** - Gerenciamento de formulários
+- **🧩 Radix UI** - Componentes acessíveis
+- **✨ Lucide React** - Ícones modernos
 
-Nx automatically updates TypeScript [project references](https://www.typescriptlang.org/docs/handbook/project-references.html) in `tsconfig.json` files to ensure they remain accurate based on your project dependencies (`import` or `require` statements). This sync is automatically done when running tasks such as `build` or `typecheck`, which require updated references to function correctly.
+### Desenvolvimento e Ferramentas 🔨
+- **🏗️ Nx** - Ferramentas de build para monorepo
+- **📘 TypeScript** - Tipagem estática
+- **⚡ Vite** - Build tool rápido
+- **🧪 Vitest** - Framework de testes
+- **🎯 Biome** - Linter e formatador
+- **🔧 ESBuild** - Bundler ultra-rápido
+- **🎨 Prettier** - Formatação de código
+- **🐺 Husky** - Git hooks
+- **📝 Commitizen** - Commits convencionais
+- **🔍 CommitLint** - Validação de commits
 
-To manually trigger the process to sync the project graph dependencies information to the TypeScript project references, run the following command:
+## 🏛️ Padrões Arquiteturais
 
-```sh
-npx nx sync
+### Backend - Clean Architecture 🏗️
+```
+🔧 Backend Structure:
+├── 📁 use-cases/        # Casos de uso (regras de negócio)
+├── 📁 repositories/     # Interfaces de dados
+├── 📁 services/         # Serviços de domínio
+├── 📁 routes/           # Controladores HTTP
+├── 📁 middlewares/      # Middlewares customizados
+├── 📁 plugins/          # Plugins do Fastify
+├── 📁 db/              # Configuração do banco
+└── 📁 @types/          # Tipos TypeScript
 ```
 
-You can enforce that the TypeScript project references are always in the correct state when running in CI by adding a step to your CI job configuration that runs the following command:
-
-```sh
-npx nx sync:check
+### Frontend - Component-Based Architecture 🎨
+```
+🎨 Frontend Structure:
+├── 📁 components/       # Componentes reutilizáveis
+├── 📁 routes/           # Páginas da aplicação
+├── 📁 hooks/            # Custom hooks React
+├── 📁 http/             # Cliente HTTP e APIs
+└── 📁 lib/              # Utilitários e helpers
 ```
 
-[Learn more about nx sync](https://nx.dev/reference/nx-commands#sync)
+#### 🧩 Padrão de Componentes Frontend
 
-## Set up CI!
+O frontend segue uma arquitetura **Model-View-ViewModel (MVVM)** combinada com **Design System baseado em CVA** (Class Variance Authority):
 
-### Step 1
-
-To connect to Nx Cloud, run the following command:
-
-```sh
-npx nx connect
+##### 📦 **Estrutura de Componentes Complexos**
+```
+📁 login-form/
+├── 📄 index.ts              # Barrel export (ponto de entrada)
+├── 📄 login-form.types.ts   # Definições de tipos TypeScript
+├── 📄 login-form.schema.ts  # Validação com Zod
+├── 📄 login-form.model.ts   # Lógica de negócio e estado
+├── 📄 login-form.view.tsx   # Apresentação pura (UI)
+└── 📄 login-form.viewmodel.tsx # Orquestração entre Model e View
 ```
 
-Connecting to Nx Cloud ensures a [fast and scalable CI](https://nx.dev/ci/intro/why-nx-cloud?utm_source=nx_project&utm_medium=readme&utm_campaign=nx_projects) pipeline. It includes features such as:
-
-- [Remote caching](https://nx.dev/ci/features/remote-cache?utm_source=nx_project&utm_medium=readme&utm_campaign=nx_projects)
-- [Task distribution across multiple machines](https://nx.dev/ci/features/distribute-task-execution?utm_source=nx_project&utm_medium=readme&utm_campaign=nx_projects)
-- [Automated e2e test splitting](https://nx.dev/ci/features/split-e2e-tasks?utm_source=nx_project&utm_medium=readme&utm_campaign=nx_projects)
-- [Task flakiness detection and rerunning](https://nx.dev/ci/features/flaky-tasks?utm_source=nx_project&utm_medium=readme&utm_campaign=nx_projects)
-
-### Step 2
-
-Use the following command to configure a CI workflow for your workspace:
-
-```sh
-npx nx g ci-workflow
+##### 🎨 **Design System (UI Components)**
+```typescript
+// Exemplo: Button component usando CVA
+const buttonVariants = cva(
+  "base-styles", // estilos base
+  {
+    variants: {
+      variant: {
+        default: "bg-primary text-primary-foreground",
+        destructive: "bg-destructive text-white",
+        outline: "border bg-background"
+      },
+      size: {
+        default: "h-9 px-4 py-2",
+        sm: "h-8 px-3",
+        lg: "h-10 px-6"
+      }
+    }
+  }
+)
 ```
 
-[Learn more about Nx on CI](https://nx.dev/ci/intro/ci-with-nx#ready-get-started-with-your-provider?utm_source=nx_project&utm_medium=readme&utm_campaign=nx_projects)
+##### 🔄 **Padrões de Implementação**
 
-## Install Nx Console
+1. **📋 Model (Hooks customizados)**
+   - Gerencia estado local e server state
+   - Contém lógica de negócio
+   - Integra com APIs via React Query
 
-Nx Console is an editor extension that enriches your developer experience. It lets you run tasks, generate code, and improves code autocompletion in your IDE. It is available for VSCode and IntelliJ.
+2. **🖼️ View (Componentes puros)**
+   - Responsável apenas pela renderização
+   - Recebe props tipadas do ViewModel
+   - Sem lógica de negócio
 
-[Install Nx Console &raquo;](https://nx.dev/getting-started/editor-setup?utm_source=nx_project&utm_medium=readme&utm_campaign=nx_projects)
+3. **🔗 ViewModel (Orquestrador)**
+   - Conecta Model e View
+   - Gerencia interações do usuário
+   - Coordena fluxo de dados
 
-## Useful links
+4. **🎨 UI Components (Atomic Design)**
+   - **Atoms**: Botões, inputs, labels
+   - **Molecules**: Fields, cards
+   - **Organisms**: Forms, listas complexas
+   - **Templates**: Layouts de página
 
-Learn more:
+### Packages - Domain-Driven Design 📚
+- **📝 contracts**: Schemas de validação compartilhados (API contracts)
+- **🏢 domain**: Entidades e tipos de domínio compartilhados
 
-- [Learn more about this workspace setup](https://nx.dev/nx-api/js?utm_source=nx_project&amp;utm_medium=readme&amp;utm_campaign=nx_projects)
-- [Learn about Nx on CI](https://nx.dev/ci/intro/ci-with-nx?utm_source=nx_project&utm_medium=readme&utm_campaign=nx_projects)
-- [Releasing Packages with Nx release](https://nx.dev/features/manage-releases?utm_source=nx_project&utm_medium=readme&utm_campaign=nx_projects)
-- [What are Nx plugins?](https://nx.dev/concepts/nx-plugins?utm_source=nx_project&utm_medium=readme&utm_campaign=nx_projects)
+## 🚦 Pré-requisitos
 
-And join the Nx community:
-- [Discord](https://go.nx.dev/community)
-- [Follow us on X](https://twitter.com/nxdevtools) or [LinkedIn](https://www.linkedin.com/company/nrwl)
-- [Our Youtube channel](https://www.youtube.com/@nxdevtools)
-- [Our blog](https://nx.dev/blog?utm_source=nx_project&utm_medium=readme&utm_campaign=nx_projects)
+Antes de executar o projeto, certifique-se de ter instalado:
+
+- **📦 Node.js** (versão 18 ou superior)
+- **📦 pnpm** (gerenciador de pacotes recomendado)
+- **🐳 Docker** (para o banco de dados PostgreSQL)
+- **🔧 Git** (para controle de versão)
+
+## 🏃‍♂️ Executando Localmente
+
+### 1️⃣ Clonando o Repositório
+```bash
+git clone https://github.com/ricardoaruiz/task-manager-monorepo.git
+cd task-manager-monorepo
+```
+
+### 2️⃣ Instalando Dependências
+```bash
+# Instalar dependências de todo o monorepo
+npm install
+```
+
+### 3️⃣ Configurando o Banco de Dados
+```bash
+# Iniciar PostgreSQL com Docker
+cd apps/backend
+docker compose up -d
+
+# Verificar se o container está rodando
+docker ps
+```
+
+### 4️⃣ Configurando Variáveis de Ambiente
+
+#### Backend (.env)
+```bash
+# apps/backend/.env
+DATABASE_URL="postgresql://postgres:postgres@localhost:5432/task_manager"
+JWT_SECRET="your-super-secret-jwt-key"
+PORT=3333
+NODE_ENV=development
+ALLOWED_ORIGINS=["http://localhost:4200"]
+```
+
+#### Frontend (.env)
+```bash
+# apps/frontend/.env
+VITE_API_URL=http://localhost:3333
+```
+
+### 5️⃣ Executando as Aplicações
+
+#### 🔥 Opção 1: Executar tudo simultaneamente
+```bash
+npm run all
+```
+
+#### 🎯 Opção 2: Executar individualmente
+```bash
+# Backend (porta 3333)
+npm run backend
+
+# Frontend (porta 4200)
+npm run frontend
+```
+
+### 6️⃣ Acessando as Aplicações
+- **🎨 Frontend**: http://localhost:4200
+- **🔧 Backend API**: http://localhost:3333
+- **📖 Documentação da API**: http://localhost:3333/docs
+
+## 🧪 Executando Testes
+
+```bash
+# Executar todos os testes
+nx run-many --target=test --all
+
+# Executar testes com coverage
+nx run-many --target=test --all --coverage
+
+# Executar testes em modo watch
+nx run-many --target=test --all --watch
+
+# Executar testes de um projeto específico
+nx test backend
+nx test frontend
+```
+
+## 🏗️ Build e Deploy
+
+### 📦 Build de Produção
+```bash
+# Build de todos os projetos
+npm run build:all
+
+# Build individual
+nx build backend
+nx build frontend
+```
+
+### 🚀 Scripts Disponíveis
+
+```json
+{
+  "backend": "Inicia o servidor backend em modo desenvolvimento",
+  "frontend": "Inicia o frontend em modo desenvolvimento", 
+  "all": "Executa backend e frontend simultaneamente",
+  "build:all": "Faz build de todos os projetos",
+  "test": "Executa testes de todos os projetos",
+  "lint": "Executa linting em todos os projetos",
+  "format": "Formata código com Biome"
+}
+```
+
+## 📂 Estrutura Detalhada do Projeto
+
+### 🔧 Backend (Fastify + PostgreSQL)
+- **Clean Architecture** com separação clara de responsabilidades
+- **Type-safe APIs** com Zod e TypeScript
+- **Documentação automática** com Swagger/Scalar
+- **Middlewares customizados** para autenticação e validação
+- **Repository Pattern** para abstração de dados
+- **Use Cases** para lógica de negócio
+
+### 🎨 Frontend (React + TanStack)
+- **Component-based architecture** com componentes reutilizáveis
+- **Type-safe routing** com TanStack Router
+- **State management** eficiente com TanStack Query
+- **Form handling** otimizado com React Hook Form
+- **Design System** baseado em Tailwind CSS e Radix UI
+- **Testing** abrangente com Vitest e Testing Library
+
+### 📚 Packages Compartilhados
+- **contracts**: Validações e schemas da API
+- **domain**: Entidades e tipos de domínio
+
+## 🔒 Padrões de Qualidade
+
+### 📋 Code Quality
+- **🔍 ESLint/Biome** - Linting rigoroso
+- **🎨 Prettier** - Formatação consistente
+- **📝 TypeScript** - Tipagem estática obrigatória
+- **🧪 Testes** - Cobertura de testes automatizada
+
+### 📦 Git Workflow
+- **🔀 Conventional Commits** - Padrão de commits
+- **🐺 Husky** - Pre-commit hooks
+- **📋 CommitLint** - Validação de mensagens de commit
+- **🔧 Lint-staged** - Lint apenas em arquivos modificados
+
+### 🏗️ Monorepo Benefits
+- **📦 Compartilhamento de código** entre projetos
+- **🔄 Builds incrementais** e cache inteligente
+- **🧪 Testes unificados** em todo o workspace
+- **📚 Dependency management** centralizado
+
+## 🤝 Contribuição
+
+1. **🍴 Fork** o projeto
+2. **🌿 Crie** uma branch para sua feature (`git checkout -b feature/AmazingFeature`)
+3. **📝 Commit** suas mudanças (`git commit -m 'feat: add some AmazingFeature'`)
+4. **📤 Push** para a branch (`git push origin feature/AmazingFeature`)
+5. **🔄 Abra** um Pull Request
+
+### 📋 Padrões de Commit
+Utilizamos [Conventional Commits](https://conventionalcommits.org/):
+- `feat`: nova funcionalidade
+- `fix`: correção de bug
+- `docs`: documentação
+- `style`: formatação
+- `refactor`: refatoração
+- `test`: testes
+- `chore`: tarefas de build/CI
+
+## 📄 Licença
+
+Este projeto está sob a licença **MIT**. Veja o arquivo [LICENSE](LICENSE) para mais detalhes.
+
+## 👥 Autores
+
+- **Ricardo Ruiz** - [@ricardoaruiz](https://github.com/ricardoaruiz)
+
+## 🙏 Agradecimentos
+
+- **Nx Team** - Pela excelente ferramenta de monorepo
+- **Fastify Team** - Pelo framework web performático
+- **TanStack Team** - Pelas ferramentas React de qualidade
+- **Vercel** - Pelo Tailwind CSS
+
+---
+
+⭐ **Gostou do projeto? Deixe uma estrela!** ⭐
