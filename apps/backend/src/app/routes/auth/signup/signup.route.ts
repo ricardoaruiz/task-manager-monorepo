@@ -1,6 +1,6 @@
 import type { FastifyPluginAsyncZod } from 'fastify-type-provider-zod'
 import { StatusCodes } from 'http-status-codes'
-import { SignupBodySchema, SignupResponseSuccessSchema } from './signup.schemas'
+import { SignupBodySchema, SignupResponseSuccessSchema } from '@task-manager/contracts'
 import type { RouteOptions } from './signup.types'
 
 export const signupRoute: FastifyPluginAsyncZod<RouteOptions> = async (
