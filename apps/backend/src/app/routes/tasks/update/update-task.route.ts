@@ -6,7 +6,7 @@ import {
   UpdateTaskBodySchema,
   UpdateTaskParamsSchema,
   UpdateTaskResponseSuccessSchema,
-} from './update-task.schemas'
+} from '@task-manager/contracts'
 import type { UpdateTaskOptions } from './update-task.types'
 
 export const updateTaskRoute: FastifyPluginAsyncZod<UpdateTaskOptions> = async (

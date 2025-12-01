@@ -20,7 +20,10 @@ import {
   LoadTaskRsponseSuccessSchema, 
   LoadTaskParamsSchema,
   UnCompleteTaskResponseSuccessSchema,
-  UnCompleteTaskParamsSchema} from "./schemas.js";
+  UnCompleteTaskParamsSchema,
+  UpdateTaskResponseSuccessSchema,
+  UpdateTaskBodySchema,
+  UpdateTaskParamsSchema} from "./schemas.js";
 
 // Commons
 export type CommonVoidResponseType = z4.infer<typeof CommonVoidResponseSchema>;
@@ -65,3 +68,8 @@ export type LoadTaskResponseNotFoundType = z4.infer<typeof LoadTaskResponseNotFo
 // Uncomplete Task
 export type UnCompleteTaskParamsType = z4.infer<typeof UnCompleteTaskParamsSchema>;
 export type UnCompleteTaskResponseSuccessType = z4.infer<typeof UnCompleteTaskResponseSuccessSchema>;
+
+// Update Task
+export type UpdateTaskParamsType = z4.infer<typeof UpdateTaskParamsSchema>;
+export type UpdateTaskBodyType = z4.infer<typeof UpdateTaskBodySchema>;
+export type UpdateTaskResponseSuccessType = z4.infer<typeof UpdateTaskResponseSuccessSchema>;
