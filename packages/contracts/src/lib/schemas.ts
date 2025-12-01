@@ -68,3 +68,10 @@ export const ArchiveTaskParamsSchema = z4.object({
 })
 
 export const ArchiveTaskResponseSuccessSchema = z4.void()
+
+// Complete Task
+export const CompleteTaskParamsSchema = z4.object({
+  id: z4.uuidv7().describe('The unique identifier of the task to be completed'),
+})
+
+export const CompleteTaskResponseSuccessSchema = z4.void()
