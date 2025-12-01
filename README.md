@@ -65,6 +65,98 @@ O **Task Manager** é uma aplicação full-stack moderna que permite gerenciar t
 └── 📁 @types/          # Tipos TypeScript
 ```
 
+#### 🏛️ Padrões Arquiteturais do Backend
+
+O backend segue os princípios da **Clean Architecture** combinada com **SOLID principles** e **Dependency Injection**:
+
+##### 🎯 **Camadas Arquiteturais**
+
+1. **🌐 Presentation Layer (Routes)**
+   ```typescript
+   // Estrutura de rota organizada por feature
+   📁 routes/auth/login/
+   ├── 📄 index.ts           # Barrel export
+   ├── 📄 login.route.ts     # Definição da rota HTTP
+   └── 📄 login.types.ts     # Tipos específicos da rota
+   ```
+
+2. **💼 Business Logic Layer (Use Cases)**
+   ```typescript
+   // Casos de uso encapsulam regras de negócio
+   export class LoginUseCase {
+     constructor(
+       private readonly userRepository: UserRepository,
+       private readonly hashService: HashService,
+       private readonly tokenService: TokenService
+     ) {}
+   
+     async execute(input: LoginInput): Promise<LoginOutput> {
+       // Lógica de negócio pura
+     }
+   }
+   ```
+
+3. **🔧 Service Layer (Domain Services)**
+   ```typescript
+   // Serviços com interfaces para abstrair implementações
+   export interface HashService {
+     generate(params: GenerateHashParams): string
+     compare(params: CompareHashParams): boolean
+   }
+   ```
+
+4. **💾 Data Access Layer (Repositories)**
+   ```typescript
+   // Repository pattern com interfaces
+   export interface UserRepository {
+     findByEmail(email: string): Promise<User | null>
+     create(user: CreateUserInput): Promise<User>
+   }
+   ```
+
+##### 🔄 **Padrões de Design Implementados**
+
+1. **🏭 Factory Pattern**
+   - `UseCaseFactory` centraliza criação de casos de uso
+   - Facilita injeção de dependências
+   - Permite troca de implementações (DB vs In-Memory)
+
+2. **📦 Repository Pattern**
+   - Abstrai acesso a dados
+   - Interfaces bem definidas
+   - Múltiplas implementações (Drizzle, In-Memory)
+
+3. **🎯 Strategy Pattern**
+   - Diferentes estratégias de hash (bcrypt)
+   - Diferentes provedores de token (JOSE)
+   - Flexibilidade para trocar implementações
+
+4. **🔌 Dependency Injection**
+   - Inversão de controle nas dependências
+   - Facilita testes unitários
+   - Baixo acoplamento entre camadas
+
+##### 📋 **Estrutura de Features**
+
+Cada feature segue uma organização padronizada:
+
+```
+📁 feature-name/
+├── 📄 feature.route.ts        # Controller HTTP
+├── 📄 feature.use-case.ts     # Lógica de negócio
+├── 📄 feature.use-case.spec.ts # Testes unitários
+├── 📄 feature.types.ts        # Tipos específicos
+└── 📄 index.ts               # Barrel exports
+```
+
+##### ✅ **Benefícios da Arquitetura**
+
+- **🔄 Testabilidade**: Cada camada pode ser testada isoladamente
+- **🔧 Manutenibilidade**: Separação clara de responsabilidades
+- **📈 Escalabilidade**: Fácil adição de novas features
+- **🔀 Flexibilidade**: Troca de implementações sem impacto
+- **📚 Reusabilidade**: Casos de uso independentes de framework
+
 ### Frontend - Component-Based Architecture 🎨
 ```
 🎨 Frontend Structure:
