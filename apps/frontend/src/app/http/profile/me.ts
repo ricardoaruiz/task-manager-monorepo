@@ -1,13 +1,8 @@
-import { api } from '../../lib/axios'
+import type { MeResponseSuccessType } from "@task-manager/contracts";
+import { api } from "../../lib/axios";
 
-export type MeResponse = {
-  id: string
-  name: string
-  email: string
-}
+export async function me(): Promise<MeResponseSuccessType> {
+	const result = await api.get("/profile/me");
 
-export async function me(): Promise<MeResponse> {
-  const result = await api.get('/profile/me')
-
-  return result.data
+	return result.data;
 }
